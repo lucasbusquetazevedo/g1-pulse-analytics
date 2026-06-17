@@ -16,7 +16,7 @@ from google.cloud import bigquery
 load_dotenv()
 
 PROJECT_ID = os.getenv("GCP_PROJECT_ID")
-DATASET = os.getenv("BQ_DATASET", "g1_pulse")
+DATASET = os.getenv("BQ_DATASET", "pulso_editorial")
 LOCATION = os.getenv("BQ_LOCATION", "US")
 INPUT_PATH = Path("data/processed/articles_with_engagement.csv")
 

@@ -1,4 +1,4 @@
-# G1 Pulse — Analytics de Conteúdo Editorial
+# Pulso Editorial — Analytics de Conteúdo Editorial
 
 > Projeto de portfólio inspirado no ciclo analítico de produtos de notícias digitais (G1/Globo), construído para praticar SQL avançado, BigQuery, testes A/B e dashboards executivos em escala de portfólio Jr.
 
@@ -7,6 +7,14 @@
 Este projeto simula, em escala reduzida, o ciclo analítico descrito por times de dados de produtos de notícia digital: extração de dados editoriais, modelagem em data warehouse, testes A/B e dashboards de engajamento.
 
 Foi criado como projeto de estudo/portfólio para candidatura a vaga de Analista de Dados Jr. **Não possui nenhum vínculo, acesso ou afiliação com a Globo/G1.**
+
+## Fonte de dados
+
+A camada real deste projeto é construída a partir dos **feeds RSS públicos do G1**, portal de notícias da Globo (`g1.globo.com`), coletados em conformidade com o `robots.txt` do site — o caminho `/rss/g1/` não está bloqueado para bots.
+
+- Cada registro coletado preserva o link original da matéria, direcionando de volta para o G1.
+- Nenhum conteúdo é republicado ou redistribuído — apenas metadados (título, editoria, data de publicação) são armazenados, para fins de análise.
+- O nome do projeto não usa a marca G1 para deixar claro que se trata de um exercício técnico independente, não de um produto oficial ou afiliado — mas a fonte dos dados é o G1, e isso é citado abertamente aqui.
 
 ## ⚠️ Transparência sobre os dados
 
@@ -30,7 +38,7 @@ Detalhamento completo de premissas e limitações em [`docs/metodologia.md`](doc
 ## Estrutura do repositório
 
 ```
-g1-pulse-analytics/
+pulso-editorial-analytics/
 ├── .github/workflows/      # CI: coleta automática de RSS
 ├── data/
 │   ├── raw/                # camada real (RSS coletado)

@@ -1,7 +1,7 @@
 """
 Coleta metadados de artigos do G1 via feeds RSS públicos por editoria.
 
-Camada de dados REAIS do projeto G1 Pulse — não coleta métricas de
+Camada de dados REAIS do projeto Pulso Editorial — não coleta métricas de
 engajamento (pageviews, tempo na página, etc.), que são dados internos
 do produto e não estão disponíveis publicamente. Essa camada é gerada
 separadamente em src/synthetic/generate_engagement.py.
@@ -34,8 +34,8 @@ OUTPUT_PATH = Path("data/raw/articles.jsonl")
 # então passamos os bytes para o feedparser.
 HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 (compatible; G1PulseBot/1.0; "
-        "+https://github.com/lucasbusquetazevedo/g1-pulse-analytics)"
+        "Mozilla/5.0 (compatible; PulsoEditorialBot/1.0; "
+        "+https://github.com/lucasbusquetazevedo/pulso-editorial-analytics)"
     )
 }
 

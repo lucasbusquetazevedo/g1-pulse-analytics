@@ -1,9 +1,0 @@
-requests>=2.32
-feedparser>=6.0
-beautifulsoup4>=4.12
-pandas>=2.2
-numpy>=1.26
-scipy>=1.13
-statsmodels>=0.14
-google-cloud-bigquery>=3.25
-python-dotenv>=1.0

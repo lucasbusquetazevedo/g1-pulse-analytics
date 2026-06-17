@@ -1,4 +1,4 @@
-# Metodologia — G1 Pulse
+# Metodologia — Pulso Editorial
 
 Este documento existe para deixar claro, para qualquer recrutador ou revisor de código, o que é dado real e o que é dado simulado neste projeto.
 
