@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import feedparser
+import requests
 
 CATEGORIAS = [
     "politica",
@@ -27,6 +28,16 @@ CATEGORIAS = [
 
 BASE_URL = "https://g1.globo.com/rss/g1/{categoria}"
 OUTPUT_PATH = Path("data/raw/articles.jsonl")
+
+# Alguns CDNs bloqueiam o user-agent padrão de bibliotecas de parsing.
+# Buscamos o conteúdo via requests com um user-agent de navegador e só
+# então passamos os bytes para o feedparser.
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (compatible; G1PulseBot/1.0; "
+        "+https://github.com/lucasbusquetazevedo/g1-pulse-analytics)"
+    )
+}
 
 
 def carregar_links_existentes(path: Path) -> set:
@@ -45,7 +56,10 @@ def carregar_links_existentes(path: Path) -> set:
 
 def coletar_categoria(categoria: str) -> list[dict]:
     url = BASE_URL.format(categoria=categoria)
-    feed = feedparser.parse(url)
+    resposta = requests.get(url, headers=HEADERS, timeout=10)
+    resposta.raise_for_status()
+
+    feed = feedparser.parse(resposta.content)
     artigos = []
     for entrada in feed.entries:
         artigos.append(
