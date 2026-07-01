@@ -16,7 +16,7 @@ A camada real deste projeto é construída a partir dos **feeds RSS públicos do
 - Nenhum conteúdo é republicado ou redistribuído — apenas metadados (título, editoria, data de publicação) são armazenados, para fins de análise.
 - O nome do projeto não usa a marca G1 para deixar claro que se trata de um exercício técnico independente, não de um produto oficial ou afiliado — mas a fonte dos dados é o G1, e isso é citado abertamente aqui.
 
-## ⚠️ Transparência sobre os dados
+## Transparência sobre os dados
 
 | Camada | Origem | Tipo |
 |---|---|---|
@@ -33,7 +33,7 @@ Detalhamento completo de premissas e limitações em [`docs/metodologia.md`](doc
 - **Processamento:** Python (`pandas`, `numpy`)
 - **Data Warehouse:** Google BigQuery (free tier)
 - **Análise estatística:** `scipy` / `statsmodels` (teste A/B)
-- **Dashboard:** Looker Studio
+- **Dashboard:** Looker Studio · HTML/Chart.js (versão estática)
 
 ## Estrutura do repositório
 
@@ -77,7 +77,9 @@ python src/analysis/ab_test.py
 
 ## Dashboard
 
-🔗 [Acessar dashboard no Looker Studio](https://datastudio.google.com/reporting/43d63efb-ce10-479d-8bff-e564d492fd17)
+[Acessar dashboard no Looker Studio](https://datastudio.google.com/reporting/43d63efb-ce10-479d-8bff-e564d492fd17)
+
+[Versão HTML estática](dashboards/pulso_editorial_dashboard.html) — abre direto no navegador, sem dependências externas
 
 ## Resultados
 
