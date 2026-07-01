@@ -1,8 +1,6 @@
 # Dashboard — Looker Studio
 
-Link público do dashboard (preencher após publicar):
-
-`https://lookerstudio.google.com/...`
+https://datastudio.google.com/reporting/43d63efb-ce10-479d-8bff-e564d492fd17
 
 ## KPIs planejados
 
