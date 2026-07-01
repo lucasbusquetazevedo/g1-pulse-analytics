@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulso Editorial — Análise de Conteúdo G1</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #0b0b0b; }
+.header { background: #cc0000; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+.header-logo { color: #fff; font-size: 22px; font-weight: 500; letter-spacing: -0.5px; }
+.header-sub { color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 2px; }
+.body { padding: 20px 24px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.kpi { background: #fff; border: 0.5px solid #e1e0d9; border-radius: 8px; padding: 14px 16px; border-top: 3px solid #cc0000; }
+.kpi-label { font-size: 11px; color: #898781; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.kpi-value { font-size: 26px; font-weight: 500; color: #0b0b0b; line-height: 1; }
+.kpi-sub { font-size: 12px; color: #52514e; margin-top: 4px; }
+.charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.charts-grid-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.chart-card { background: #fff; border: 0.5px solid #e1e0d9; border-radius: 8px; padding: 16px; }
+.chart-title { font-size: 13px; font-weight: 500; color: #0b0b0b; margin-bottom: 4px; }
+.chart-sub { font-size: 11px; color: #898781; margin-bottom: 14px; }
+.chart-wrap { position: relative; width: 100%; }
+.footer { text-align: center; padding: 20px; font-size: 11px; color: #898781; border-top: 0.5px solid #e1e0d9; margin-top: 20px; }
+.footer a { color: #cc0000; text-decoration: none; }
+@media (max-width: 700px) {
+  .kpi-row { grid-template-columns: 1fr 1fr; }
+  .charts-grid, .charts-grid-bottom { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-logo">Pulso Editorial</div>
+    <div class="header-sub">Análise de conteúdo — G1 · Feeds RSS públicos</div>
+  </div>
+</div>
+
+<div class="body">
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-label">Total de artigos</div>
+      <div class="kpi-value">780</div>
+      <div class="kpi-sub">8 editorias</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Maior engajamento</div>
+      <div class="kpi-value">Mundo</div>
+      <div class="kpi-sub">10.087 views/artigo</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Dia mais produtivo</div>
+      <div class="kpi-value">Terça</div>
+      <div class="kpi-sub">26,9% da produção semanal</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Teste A/B</div>
+      <div class="kpi-value">p &lt; 0,001</div>
+      <div class="kpi-sub">Variante B +25% CTR</div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-title">Volume por editoria</div>
+      <div class="chart-sub">Total de artigos coletados · dados reais RSS</div>
+      <div class="chart-wrap" style="height: 280px;">
+        <canvas id="c1" role="img" aria-label="Volume de artigos por editoria. Política e Natureza lideram com 100 artigos cada.">Política e Natureza lideram com 100 artigos cada.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Engajamento médio por editoria</div>
+      <div class="chart-sub">Pageviews médios por artigo · métrica simulada</div>
+      <div class="chart-wrap" style="height: 280px;">
+        <canvas id="c2" role="img" aria-label="Engajamento médio por editoria. Mundo lidera com 10.087 pageviews por artigo.">Mundo lidera com 10.087 pageviews por artigo.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-grid-bottom">
+    <div class="chart-card">
+      <div class="chart-title">Volume por dia da semana</div>
+      <div class="chart-sub">Distribuição editorial semanal · dados reais RSS</div>
+      <div class="chart-wrap" style="height: 220px;">
+        <canvas id="c3" role="img" aria-label="Volume de artigos por dia da semana. Terça-feira concentra 26,9% da produção.">Terça-feira concentra 26,9% da produção semanal.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Pico de publicação por hora</div>
+      <div class="chart-sub">Artigos publicados por hora do dia · dados reais RSS</div>
+      <div class="chart-wrap" style="height: 220px;">
+        <canvas id="c4" role="img" aria-label="Volume de artigos por hora do dia. Pico às 9h com 100 artigos.">Pico às 9h com 100 artigos.</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Projeto de portfólio · dados editoriais reais via RSS público do
+  <a href="https://g1.globo.com" target="_blank">G1</a> ·
+  métricas de engajamento simuladas ·
+  <a href="https://github.com/lucasbusquetazevedo/g1-pulse-analytics" target="_blank">GitHub</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const RED = '#cc0000';
+const RED_MID = 'rgba(204,0,0,0.5)';
+const textMuted = '#898781';
+const gridColor = '#e1e0d9';
+
+const baseOpts = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { display: false } },
+  scales: {
+    x: { ticks: { color: textMuted, font: { size: 11 } }, grid: { color: gridColor }, border: { color: gridColor } },
+    y: { ticks: { color: textMuted, font: { size: 11 } }, grid: { color: gridColor }, border: { color: gridColor } }
+  }
+};
+
+new Chart(document.getElementById('c1'), {
+  type: 'bar',
+  data: {
+    labels: ['Política','Natureza','Ciência e Saúde','Educação','Carros','Turismo e Viagem','Mundo','Economia'],
+    datasets: [{ data: [100,100,100,100,99,99,82,78], backgroundColor: [RED,RED,RED,RED,RED_MID,RED_MID,RED_MID,RED_MID], borderRadius: 4, borderSkipped: false }]
+  },
+  options: { ...baseOpts, indexAxis: 'y' }
+});
+
+new Chart(document.getElementById('c2'), {
+  type: 'bar',
+  data: {
+    labels: ['Mundo','Política','Economia','Ciência e Saúde','Carros','Natureza','Turismo e Viagem','Educação'],
+    datasets: [{ data: [10087,8701,4819,3701,3569,3560,2625,2616], backgroundColor: [RED,RED,RED_MID,RED_MID,RED_MID,RED_MID,RED_MID,RED_MID], borderRadius: 4, borderSkipped: false }]
+  },
+  options: { ...baseOpts, indexAxis: 'y', plugins: { ...baseOpts.plugins, tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.x.toLocaleString('pt-BR') + ' views' } } }, scales: { x: { ...baseOpts.scales.x, ticks: { ...baseOpts.scales.x.ticks, callback: v => (v/1000).toFixed(0)+'k' } }, y: baseOpts.scales.y } }
+});
+
+new Chart(document.getElementById('c3'), {
+  type: 'bar',
+  data: {
+    labels: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+    datasets: [{ data: [74,122,204,160,80,73,45], backgroundColor: ['rgba(204,0,0,0.45)','rgba(204,0,0,0.45)',RED,'rgba(204,0,0,0.45)','rgba(204,0,0,0.45)','rgba(204,0,0,0.45)','rgba(204,0,0,0.45)'], borderRadius: 4, borderSkipped: false }]
+  },
+  options: { ...baseOpts, scales: { x: { ...baseOpts.scales.x, ticks: { ...baseOpts.scales.x.ticks, autoSkip: false } }, y: baseOpts.scales.y } }
+});
+
+new Chart(document.getElementById('c4'), {
+  type: 'bar',
+  data: {
+    labels: Array.from({length:24},(_,i)=>i+'h'),
+    datasets: [{ data: [5,4,2,49,5,17,30,28,36,100,22,38,41,43,50,43,37,31,47,43,27,30,19,11], backgroundColor: [5,4,2,49,5,17,30,28,36,100,22,38,41,43,50,43,37,31,47,43,27,30,19,11].map(v => v===100 ? RED : 'rgba(204,0,0,0.45)'), borderRadius: 2, borderSkipped: false }]
+  },
+  options: { ...baseOpts, scales: { x: { ...baseOpts.scales.x, ticks: { ...baseOpts.scales.x.ticks, autoSkip: true, maxTicksLimit: 12 } }, y: baseOpts.scales.y } }
+});
+</script>
+</body>
+</html>
