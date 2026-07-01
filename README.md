@@ -33,7 +33,7 @@ Detalhamento completo de premissas e limitações em [`docs/metodologia.md`](doc
 - **Processamento:** Python (`pandas`, `numpy`)
 - **Data Warehouse:** Google BigQuery (free tier)
 - **Análise estatística:** `scipy` / `statsmodels` (teste A/B)
-- **Dashboards:** Looker Studio + Power BI
+- **Dashboard:** Looker Studio
 
 ## Estrutura do repositório
 
@@ -75,16 +75,29 @@ python src/etl/bigquery_loader.py
 python src/analysis/ab_test.py
 ```
 
-## Status do projeto
+## Dashboard
 
-- [x] Estrutura do repositório
-- [ ] Coleta de dados RSS rodando via GitHub Actions
-- [ ] Geração da camada sintética
-- [ ] Carga no BigQuery
-- [ ] Queries SQL de análise
-- [ ] Teste A/B
-- [ ] Dashboard Looker Studio
-- [ ] Dashboard Power BI
+🔗 [Acessar dashboard no Looker Studio](https://datastudio.google.com/reporting/43d63efb-ce10-479d-8bff-e564d492fd17)
+
+## Resultados
+
+A análise foi realizada sobre **780 artigos** coletados automaticamente via feeds RSS públicos do G1, distribuídos em 8 editorias.
+
+**Volume editorial**
+- As editorias Política, Natureza, Ciência e Saúde e Educação lideraram em volume de publicações (100 artigos cada no período de coleta).
+- Mundo (82) e Economia (78) apresentaram volume menor — reflexo da rotatividade mais rápida do feed nessas editorias, não necessariamente menor produção editorial.
+- Terça e Segunda concentraram 43% de toda a produção semanal, enquanto Sábado representou apenas 5.9% — padrão consistente com o ciclo de redação jornalística.
+
+**Engajamento simulado**
+- Mundo liderou o engajamento médio simulado (10.087 pageviews/artigo), seguido de Política (8.701) — resultado coerente com o modelo, que calibra editorias de maior volatilidade noticiosa com picos de tráfego maiores.
+- Educação e Turismo e Viagem registraram os menores índices de engajamento médio simulado (~2.600 pageviews/artigo).
+- As métricas de engajamento são simuladas — ver transparência sobre os dados acima.
+
+**Teste A/B (simulado)**
+- Variante A (manchete controle): CTR de 7.8% em 5.000 impressões
+- Variante B (manchete teste): CTR de 9.78% em 5.000 impressões
+- Resultado: z = -3.49, p ≈ 0.0005 — diferença estatisticamente significativa (p < 0.05), indicando que a variante B teria impacto real se o experimento fosse conduzido em produção.
+- Metodologia completa em `src/analysis/ab_test.py`.
 
 ## Autor
 
