@@ -81,6 +81,10 @@ python src/analysis/ab_test.py
 
 [Versão HTML estática](dashboards/pulso_editorial_dashboard.html) — abre direto no navegador, sem dependências externas
 
+<a href="https://htmlpreview.github.io/?https://github.com/lucasbusquetazevedo/g1-pulse-analytics/blob/main/dashboards/pulso_editorial_dashboard.html" target="_blank">
+  <img src="https://img.shields.io/badge/Acessar%20Dashboard%20Executivo-111827?style=for-the-badge&logo=google&logoColor=3ECF8E" alt="Ver Dashboard Editorial">
+</a>
+
 ## Resultados
 
 A análise foi realizada sobre **780 artigos** coletados automaticamente via feeds RSS públicos do G1, distribuídos em 8 editorias.
